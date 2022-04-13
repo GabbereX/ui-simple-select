@@ -1,0 +1,96 @@
+html {
+  font-family: verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 100vh;
+}
+
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.select {
+  position: relative;
+  width: 300px;
+  user-select: none;
+}
+
+.select__header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 7px 15px;
+  height: 30px;
+  border: 1px solid #333;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.select__header:hover {
+  color: white;
+  background: #000;
+}
+
+.select__header[data-open]::after {
+  content: "";
+  top: 24px;
+  right: 15px;
+  position: absolute;
+  width: 11px;
+  height: 6px;
+  background: url("arrow.svg") 0 0 no-repeat;
+  transform: translateY(-50%) rotateX(180deg);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.select__header[data-open=yes]::after {
+  transform: translateY(-50%) rotateX(0);
+}
+
+.select__body {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.select__option {
+  position: relative;
+  padding: 7px 15px;
+  border: 1px solid #333;
+  border-top: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.select__option:hover {
+  color: white;
+  background: #000;
+}
+
+.select__checked::after {
+  content: 'V';
+  position: absolute;
+  right: 10px;
+  top: 25%;
+  animation: checked 0.2s ease;
+}
+
+@keyframes checked{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
